@@ -9,8 +9,9 @@ To successfully complete this workshop you will need:
 
 * Docker installed as we will setup a container with `nginx` that will host our app 
 
-_Note 1: if you don't have docker you can install `nginx` manually on your laptop_
-_Note 2: you can work without `nginx` alltogether but you will not be able to complete part of the workshop
+> If you don't have docker you can install `nginx` manually on your laptop_
+
+> You can work without `nginx` alltogether but you will not be able to complete part of the workshop
 
 * Your IDE of choice, you will need to edit files and add some code in order to complete this workshop.
 

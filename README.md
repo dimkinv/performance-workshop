@@ -42,7 +42,8 @@ After that you will make changes to the `awesome-app` to make it faster and bett
 * CSS critical path
 * Activating HTTP/2
 
-# Workshop progress
+# Workshop Exercise
+Before you begin the optimization exercise please finish the performance [library exercise](PERFORMANCE.md)
 ## Activate gzip
 1. Load the app and look at the `index.html` file in network tab response headers. You can see that thogh browser sent `Accept-Encoding: gzip, deflate, br` header the content came up uncompressed.
 1. Inside `default.conf` file (which is the configuration file for nginx) please add `gzip on;` on line 2.

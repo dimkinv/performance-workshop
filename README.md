@@ -37,9 +37,9 @@ After that you will make changes to the `awesome-app` to make it faster and bett
 
 * Activating gzip
 * Decrease media size
-* Splitting code into chunks
-* Deferring offscrean images
 * CSS critical path
+* Splitting code into chunks
+* Deferring offscreen images
 * Activating HTTP/2
 
 # Workshop Exercise
@@ -51,4 +51,31 @@ Before you begin the optimization exercise please finish the performance [librar
 1. You should now be able to see response header `Content-Encoding: gzip` sent back from server
 1. Please reload the app and notice the differences in performance.
 1. By default `nginx` will only activate gzip on `text/plain` MIME type. To improve performance event better please add `gzip_types text/plain application/javascript text/css;` to line 3. 
-1. Check the performance report again and see if there was further improvement
+1. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
+
+## Lowering media size
+1. Find some onlint convert tool and convert all jpg files into webp, you can use (this)[https://convertio.co/jpg-webp/] site for the task.
+
+1. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
+
+## CSS Critical Path
+1. Go and look on the style css file, you will find that some of it is not relevant for the initial page load. 
+2. Cut only the relevant top part and put as an inline css script inside `index.html`
+3. Add the following line to `index.html` to load the rest of the css but not as part of the initial loading of the page
+```
+<link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+```
+4. Check the performance report again, pay special attention on the `first-paint` and `first-contentful-paint` timings and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
+5. You can also run Audit in chrome dev tools and watch the difference in the `Eliminate render-blocking resources` opportunity
+
+> Essentially the line above works by telling the browser to prefetch the stylesheed but not to render it. and upon fetching then turn it into normal css `link` tag
+
+## Deferring Offscreen Images
+There are a lot of libraries that can help us to lazy load images based on bounding box of the viewport. In this workshop we will use (lazysizes)[https://github.com/aFarkas/lazysizes]. You can download latest version (here)[https://raw.githubusercontent.com/aFarkas/lazysizes/gh-pages/lazysizes.min.js]
+
+1. Download the library and add it in the head of the `index.html`
+2. Replace `img` to: `<img data-src="<IMAGE_PATH>" class="lazyload c-product__image" />`
+3. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
+4. Pay attention to the network tab, you should only be able to see the images loading when you scroll down to the images.
+
+> There are different ways to lazy load images, but most of them make use of the (Intercention Observer API)[https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API]

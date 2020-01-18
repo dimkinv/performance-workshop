@@ -24,14 +24,14 @@ docker run --rm --name some-nginx -p <LOCAL_PORT>:80 \
 -v <GITHUB_PROJECT_ABSOLUTE_PATH>/awesome-app:/usr/share/nginx/html:ro -it nginx
 ```
 
-After container is up you should be able to see it running at `http://localhost:<PORT_CHOSEN>`
+After container is up you should be able to see it running at `http://localhost:<LOCAL_PORT>`
 
 Because we are running this prject locally it will be very hard to see performance differences as webapp will load almost instanteniously. 
 
 To simulate loading time we will nee to throttle down the connection, this can be done in chrome DevTools.
 Please throttle connection down to `Fast 3G`. Also please diable cache
 
-# Workshop wrogress
+# Workshop
 In this workshop you will learn about performance API and write some code to see what is hapenning in begind the scenes. 
 After that you will make changes to the `awesome-app` to make it faster and better. This workshop concentrates on the following changes:
 

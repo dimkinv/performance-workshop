@@ -23,6 +23,14 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 ---------|------------
 `getEntries()`| returns `PerformanceEntry` list of object (more on that later)
 `getEntriesByName()`| retrieved entries by `EntryType` 
+`mark()`| creates custom mark that is added to the entries list and can be then fetched with the `getEntries()`
+
+**Measuring Time**
+When measuting time with `Date.now()` timestamp the maximum accuracy would be [mostly](https://johnresig.com/blog/accuracy-of-javascript-time/) around 1ms or more. In addition, `Date.now()` will give you time in milliseconds relative to EPOC time.
+
+Often, to measure performance it is just not enough. To solve this Browsers provide the `performance.now()` method. This method return time relative to `performance.timing.navigationStart` timestamp. In other words to calculate current time you can do `performance.timing.navigationStart + performance.now()`. This function is not blocked to a `1ms` percision.
+
+> NOTE: In current versions some browsers limiting the percision of a `performance.now()` function to protect users from timing attacks. Some are limiting percision to a `1ms` as same as `Date.now()`. This is due to change in the future when these attacks can be addressed. In any case it is very recommended to use `performance.now()` measurement as is it genrally more accurate.
 
 ## Exercise
 In this workshop we will use performance api to write detailed log of our site loading times. 

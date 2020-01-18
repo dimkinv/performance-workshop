@@ -21,13 +21,15 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 ### Methods
 
 |property|description|
----------|------------
+|--------|-----------|
 `getEntries()`| returns `PerformanceEntry` list of object (more on that later)
 `getEntriesByName()`| retrieved entries by `EntryType` 
 `mark()`| creates custom mark that is added to the entries list and can be then fetched with the `getEntries()`
 
 ### Important `mark()` properties
+
 |property|description|
+|--------|-----------|
 |`entryType`|will be set to `mark` this is the property by which you can then filter the entry with `getEntriesByName()`|
 |`name`| name of the mark|
 |`duration`| set to 0 as mark doesn't have duration|

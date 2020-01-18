@@ -57,6 +57,8 @@ Before you begin the optimization exercise please finish the performance [librar
 
 1. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
 
+1. (BONUS) lower image size when applicable for more improvement
+
 ## CSS Critical Path
 1. Go and look on the style css file, you will find that some of it is not relevant for the initial page load. 
 2. Cut only the relevant top part and put as an inline css script inside `index.html`

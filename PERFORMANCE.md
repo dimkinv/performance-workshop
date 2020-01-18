@@ -37,7 +37,7 @@ When measuting time with `Date.now()` timestamp the maximum accuracy would be [m
 
 Often, to measure performance it is just not enough. To solve this Browsers provide the `performance.now()` method. This method return time relative to `performance.timing.navigationStart` timestamp. In other words to calculate current time you can do `performance.timing.navigationStart + performance.now()`. This function is not blocked to a `1ms` percision.
 
-> NOTE: In current versions some browsers limiting the percision of a `performance.now()` function to protect users from timing attacks. Some are limiting percision to a `1ms` as same as `Date.now()`. This is due to change in the future when these attacks can be addressed. In any case it is very recommended to use `performance.now()` measurement as is it genrally more accurate.
+> NOTE: In current versions some browsers limiting the percision of a `performance.now()` function to protect users from timing attacks. Some are limiting percision to a `1ms` as same as `Date.now()`. This is due to change in the future when these attacks can be addressed. In any case it is very recommended to use `performance.now()` measurement as is it generally more accurate.
 
 ## Exercise
 In this workshop we will use performance api to write detailed log of our site loading times. 

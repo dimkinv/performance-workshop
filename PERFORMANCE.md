@@ -26,7 +26,7 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 `getEntriesByName()`| retrieved entries by `EntryType` 
 `mark()`| creates custom mark that is added to the entries list and can be then fetched with the `getEntries()`
 
-### Important `mark()` properties
+#### Important `mark()` properties
 
 |property|description|
 |--------|-----------|

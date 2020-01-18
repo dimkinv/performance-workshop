@@ -28,9 +28,9 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 
 ### Important `mark()` properties
 |property|description|
-|`entryType`|this is the property by which you can then filter the entry with `getEntriesByName()`|
+|`entryType`|will be set to `mark` this is the property by which you can then filter the entry with `getEntriesByName()`|
 |`name`| name of the mark|
-|`duration`| if this mark represent a task that took time it can be assigned in this propery.|
+|`duration`| set to 0 as mark doesn't have duration|
 
 ## Measuring Time
 When measuting time with `Date.now()` timestamp the maximum accuracy would be [mostly](https://johnresig.com/blog/accuracy-of-javascript-time/) around 1ms or more. In addition, `Date.now()` will give you time in milliseconds relative to EPOC time.
@@ -62,7 +62,8 @@ The function should make use of `console.table()` function to draw beautiful tab
     * Total resource count (by type)
 4. Custom metrics - At the bottom of the screen there is a weather table, open the code (found in `behaviour.js`) and add marks at:
     * beginning of the `getWeather` function
-    * end of the `getWeather` function (alternatively you can measure time and put one mark with the duration it took)
-    * mark for every iteration of the inner for loop to see how much time it takes to parse a single row
+    * end of the `getWeather` function
+    * mark beginning and end for every iteration of the inner for loop to see how much time it takes to parse a single row
+    * display the calculated times at the bottom of the table
     
 **NOTE: All resource tables should be sorted by loading time from `high` to `low`**

@@ -17,7 +17,8 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 |`PerformanceNavigationTiming`|Stores metrics regarding vaigation events. This object can be used to detirmine how much time it took to load the app
 |`PerformanceResourceTiming`|Stores detailed timing analysis on a specific resource (it provides high-resolution timing that should be accurate up to a **5 µs** accuracy|
 |`PerformancePaintTiming`|Stores data about paint or "render" operations. _For example: entries can be with names: `first-paint` or `irst-contentful-paint`_
-**Methods**
+
+### Methods
 
 |property|description|
 ---------|------------
@@ -25,13 +26,13 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 `getEntriesByName()`| retrieved entries by `EntryType` 
 `mark()`| creates custom mark that is added to the entries list and can be then fetched with the `getEntries()`
 
-***Important `mark()` properties***
+### Important `mark()` properties
 |property|description|
 |`entryType`|this is the property by which you can then filter the entry with `getEntriesByName()`|
 |`name`| name of the mark|
 |`duration`| if this mark represent a task that took time it can be assigned in this propery.|
 
-**Measuring Time**
+## Measuring Time
 When measuting time with `Date.now()` timestamp the maximum accuracy would be [mostly](https://johnresig.com/blog/accuracy-of-javascript-time/) around 1ms or more. In addition, `Date.now()` will give you time in milliseconds relative to EPOC time.
 
 Often, to measure performance it is just not enough. To solve this Browsers provide the `performance.now()` method. This method return time relative to `performance.timing.navigationStart` timestamp. In other words to calculate current time you can do `performance.timing.navigationStart + performance.now()`. This function is not blocked to a `1ms` percision.

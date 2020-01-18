@@ -40,7 +40,6 @@ After that you will make changes to the `awesome-app` to make it faster and bett
 * CSS critical path
 * Splitting code into chunks
 * Deferring offscreen images
-* Activating HTTP/2
 
 # Workshop Exercise
 Before you begin the optimization exercise please finish the performance [library exercise](PERFORMANCE.md)
@@ -70,6 +69,12 @@ Before you begin the optimization exercise please finish the performance [librar
 
 > Essentially the line above works by telling the browser to prefetch the stylesheed but not to render it. and upon fetching then turn it into normal css `link` tag
 
+## Splitting code into chunks
+The `getWeather` function loads weather at the bottom of the screen, so it's actually not needed at the beginning of the load of the page. So let's defer it.
+
+1. Find the script reference that runs the `getWeather` function in `index.html` and add `defer` to the tag
+2. Measure again and pay attention to the `DOMContentLoaded` event change
+
 ## Deferring Offscreen Images
 There are a lot of libraries that can help us to lazy load images based on bounding box of the viewport. In this workshop we will use (lazysizes)[https://github.com/aFarkas/lazysizes]. You can download latest version (here)[https://raw.githubusercontent.com/aFarkas/lazysizes/gh-pages/lazysizes.min.js]
 
@@ -79,3 +84,8 @@ There are a lot of libraries that can help us to lazy load images based on bound
 4. Pay attention to the network tab, you should only be able to see the images loading when you scroll down to the images.
 
 > There are different ways to lazy load images, but most of them make use of the (Intercention Observer API)[https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API]
+
+## Conclution
+1. Calculate the improvement percentage of total loading time after all the steps you've made.
+
+Good luck!

@@ -87,7 +87,71 @@ There are a lot of libraries that can help us to lazy load images based on bound
 
 > There are different ways to lazy load images, but most of them make use of the (Intercention Observer API)[https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API]
 
-## Conclution
-1. Calculate the improvement percentage of total loading time after all the steps you've made.
+## Activating HTTP/2
+In order to activate HTTP/2 on the nginx server we first need to add TLS certificate to it. The reason behind it is because HTTP/2 only works over secured connection.
+
+In the project folders under `/cert` you will find the certificate files. Please change the `default.cfg` file to the following:
+```
+server {
+    listen       443 ssl;
+    listen  [::]:443 ssl;
+    server_name  localhost;
+    ssl_certificate /etc/cert/server.crt;
+    ssl_certificate_key /etc/cert/server.key;
+    ssl_protocols TLSv1.2;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+```
+This will effectively activate ssl on the localhost.
+The command with which you run the docker should also change and will look like this:
+
+```
+docker run --rm --name some-nginx -p 8080:443 \
+-v <GITHUB_PROJECT_ABSOLUTE_PATH>/cert:/etc/cert \
+-v <GITHUB_PROJECT_ABSOLUTE_PATH>/default.conf:/etc/nginx/conf.d/default.conf \
+-v <GITHUB_PROJECT_ABSOLUTE_PATH>/awesome-app:/usr/share/nginx/html:ro -it nginx
+```
+You will be asked to enter the certificate password, enter `Aa123456`
+After you run this all hell will break loose! Chrome will not agree to run https on localhost. This is actually a security threat so we will allow it only to the duration of this workshop and **will** remember to turn it off again right after. 
+
+In order to enable secure localhost:
+1. goto chrome://flags/#allow-insecure-localhost - this is the place where dragons live
+1. enable "Allow invalid certificates for resources loaded from localhost." option
+1. restart chrome.
+
+Check that http://localhost:<PORT_YOU_CHOSE> is working.
+
+Next, let's activate http/2. In nginx it is as simple as adding `http2` to the end of the 2 `listen` lines like so:
+```
+    listen       443 ssl http2;
+    listen  [::]:443 ssl http2;
+```
+This is all whats needed to activate http/2 on our website. But wait, how about pushing files via http/2 connection? Well, this can be done by adding the list of files to the nginx configurations.
+
+Let's add the images and the css file to be pushed by the server. change the `/location` scope to the following:
+```
+location / {
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
+    http2_push /styles.css;
+    http2_push /images/product-1.jpg;
+    http2_push /images/product-2.jpg;
+    http2_push /images/product-3.jpg;
+    http2_push /images/product-4.jpg;
+    http2_push /images/hero.jpg;
+}
+```
+Now re-run docker
+1. You should be able to see in network tab that the protocol now is http/2 and that images initiator is `push`
+2. Run lighthouse again... did performance changed? How faster it is now?
 
 Good luck!

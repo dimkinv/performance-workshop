@@ -90,7 +90,8 @@ There are a lot of libraries that can help us to lazy load images based on bound
 ## Activating HTTP/2
 In order to activate HTTP/2 on the nginx server we first need to add TLS certificate to it. The reason behind it is because HTTP/2 only works over secured connection.
 
-In the project folders under `/cert` you will find the certificate files. Please change the `default.cfg` file to the following:
+In the project folders under `/cert` you will find the certificate files. We need these files to be configured inside nginx configurations.
+Please change the `/default.conf` file to the following:
 ```
 server {
     listen       443 ssl;

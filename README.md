@@ -78,7 +78,7 @@ The `getWeather` function loads weather at the bottom of the screen, so it's act
 2. Measure again and pay attention to the `DOMContentLoaded` event change
 
 ## Deferring Offscreen Images
-There are a lot of libraries that can help us to lazy load images based on bounding box of the viewport. In this workshop we will use (lazysizes)[https://github.com/aFarkas/lazysizes]. You can download latest version (here)[https://raw.githubusercontent.com/aFarkas/lazysizes/gh-pages/lazysizes.min.js]
+There are a lot of libraries that can help us to lazy load images based on bounding box of the viewport. In this workshop we will use (lazysizes)[https://github.com/aFarkas/lazysizes]. You can download latest version [here](https://raw.githubusercontent.com/aFarkas/lazysizes/gh-pages/lazysizes.min.js)
 
 1. Download the library and add it in the head of the `index.html`
 2. Replace `img` to: `<img data-src="<IMAGE_PATH>" class="lazyload c-product__image" />`

@@ -44,7 +44,7 @@ After that you will make changes to the `awesome-app` to make it faster and bett
 # Workshop Exercise
 Before you begin the optimization exercise please finish the performance [library exercise](PERFORMANCE.md)
 ## Activate gzip
-1. Load the app and look at the `index.html` file in network tab response headers. You can see that thogh browser sent `Accept-Encoding: gzip, deflate, br` header the content came up uncompressed.
+1. Load the app and look at the `index.html` file in network tab response headers. You can see that through browser sent `Accept-Encoding: gzip, deflate, br` header the content came up uncompressed.
 1. Inside `default.conf` file (which is the configuration file for nginx) please add `gzip on;` on line 2.
 1. Restart the container and look on the request again
 1. You should now be able to see response header `Content-Encoding: gzip` sent back from server

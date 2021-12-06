@@ -16,7 +16,7 @@ Every entry has an `entryType` and a `name` properties that are used to distigui
 |----------|-----------|
 |`PerformanceNavigationTiming`|Stores metrics regarding vaigation events. This object can be used to detirmine how much time it took to load the app
 |`PerformanceResourceTiming`|Stores detailed timing analysis on a specific resource (it provides high-resolution timing that should be accurate up to a **5 µs** accuracy|
-|`PerformancePaintTiming`|Stores data about paint or "render" operations. _For example: entries can be with names: `first-paint` or `irst-contentful-paint`_
+|`PerformancePaintTiming`|Stores data about paint or "render" operations. _For example: entries can be with names: `first-paint` or `first-contentful-paint`_
 
 ### Methods
 
@@ -50,7 +50,7 @@ The function should make use of `console.table()` function to draw beautiful tab
 
 1. General timeline table - this table should display main events happened throughout the loading of the page. Things like:
     * `first-paint`
-    * `first-meaningful-paint`.
+    * `first-contentful-paint`.
     * when DOM has become interactive
     * How much time `content-loaded` even took
 2. Table per resource type - you should aggregate and display table for the following resource types: `css`, `scripts`, `images`. For every resource display the following info:

@@ -53,7 +53,7 @@ Before you begin the optimization exercise please finish the performance [librar
 1. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
 
 ## Lowering media size
-1. Find some onlint convert tool and convert all jpg files into webp, you can use (this)[https://convertio.co/jpg-webp/] site for the task.
+1. Find some onlint convert tool and convert all jpg files into webp, you can use [this](https://convertio.co/jpg-webp/) site for the task.
 
 1. Check the performance report again and see if there was further improvement, calculate how much time improvement you have achieved and calculate the improvement prcentage 
 
